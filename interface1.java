@@ -11,10 +11,10 @@ class Circle implements Shape {
         this.radius = radius;
     }
     public double area() {
-        return Math.PI * radius * radius;
+        return 3.14 * radius * radius;
     }
     public double perimeter() {
-        return 2 * Math.PI * radius;
+        return 2 * 3.14 * radius;
     }
 }
 
