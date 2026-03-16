@@ -1,8 +1,15 @@
+class NegativeNumberException extends Exception {
+    public NegativeNumberException() {
+        super("Negative numbers are not allowed.");
+    }
+}
+
 public class AverageCalculator {
 
     public static double calculateAverage(int[] numbers) throws NegativeNumberException {
-        int sum = 0;
+        if (numbers.length == 0) return 0;
 
+        int sum = 0;
         for (int num : numbers) {
             if (num < 0) {
                 throw new NegativeNumberException();
@@ -20,7 +27,7 @@ public class AverageCalculator {
             double avg = calculateAverage(data);
             System.out.println("Average: " + avg);
         } catch (NegativeNumberException e) {
-            System.err.println(e);
+            System.err.println(e.getMessage());
         }
     }
 }
