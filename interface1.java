@@ -6,33 +6,27 @@ interface Shape {
 }
 
 class Circle implements Shape {
-    double radius;
-
+    private double radius;
     Circle(double radius) {
         this.radius = radius;
     }
-
     public double area() {
-        return 3.14 * radius * radius;
+        return Math.PI * radius * radius;
     }
-
     public double perimeter() {
-        return 2 * 3.14 * radius;
+        return 2 * Math.PI * radius;
     }
 }
 
 class Rectangle implements Shape {
     private double length, width;
-
     Rectangle(double length, double width) {
         this.length = length;
         this.width = width;
     }
-
     public double area() {
-        return 3.14 * length * width;
+        return length * width;
     }
-
     public double perimeter() {
         return 2 * (length + width);
     }
@@ -41,15 +35,20 @@ class Rectangle implements Shape {
 public class interface1 {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
-        int choice = 0;
 
-        while (choice != 3) {
+        while (true) {
             System.out.println("\n--- Geometry Calculator ---");
             System.out.println("1. Circle");
             System.out.println("2. Rectangle");
             System.out.println("3. Exit");
             System.out.print("Select a shape: ");
-            choice = sc.nextInt();
+            
+            int choice = sc.nextInt();
+
+            if (choice == 3) {
+                System.out.println("Exiting...");
+                break;
+            }
 
             Shape shape = null;
 
@@ -63,16 +62,13 @@ public class interface1 {
                 System.out.print("Enter width: ");
                 double w = sc.nextDouble();
                 shape = new Rectangle(l, w);
-            } else if (choice == 3) {
-                System.out.println("Exiting...");
             } else {
                 System.out.println("Invalid choice!");
+                continue;
             }
 
-            if (shape != null) {
-                System.out.println("Area: " + shape.area());
-                System.out.println("Perimeter: " + shape.perimeter());
-            }
+            System.out.println("Area: " + shape.area());
+            System.out.println("Perimeter: " + shape.perimeter());
         }
        
     }
